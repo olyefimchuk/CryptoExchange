@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Nabla&display=swap');
 
+html {
+    height: 100%;
+    width: 100%;
+}
 
 body {
     margin: 0;
@@ -8,6 +12,8 @@ body {
     background: #3a0647;
     background: linear-gradient(90deg, rgba(58, 6, 71, 1) 0%, rgba(63, 9, 121, 1) 35%, rgba(157, 0, 255, 1) 100%);
     text-align: center;
+    height: 100%;
+    width: 100%;
 }
 
 h1 {

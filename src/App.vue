@@ -87,13 +87,16 @@ export default {
 .selectors {
     display: flex;
     justify-content: space-around;
-    width: 700px;
+    width: 80%;
+    max-width: 700px;
     margin: 0 auto;
+    gap: 20px;
 }
 
 .buttonConvert {
     display: block;
-    width: 200px;
+    max-width: 200px;
+    width: 80%;
     margin: 20px auto;
     padding: 10px;
     background: #1a032d;
@@ -116,12 +119,20 @@ export default {
     border-radius: 5px;
     border: 0;
     padding: 8px;
-    width: 540px;
+    width: 80%;
+    max-width: 540px;
 }
 
 .inputResult:focus {
     outline: none;
     box-shadow: none;
+}
+
+
+@media (max-width: 600px) {
+    .selectors {
+        width: 100%;
+    }
 }
 
 </style>

@@ -25,7 +25,8 @@ input {
     border-radius: 5px;
     border: 0;
     padding: 8px;
-    width: 540px;
+    width: 80%;
+    max-width: 540px;
 }
 input:focus {
     outline: none;

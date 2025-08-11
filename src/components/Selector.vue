@@ -37,7 +37,8 @@ export default {
 <style scoped>
 ul {
     list-style: none;
-    width: 200px;
+    max-width: 200px;
+    width: 30%;
     border-radius: 3px;
     border: 3px solid #000;
     padding: 0;
