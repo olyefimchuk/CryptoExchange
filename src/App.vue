@@ -2,36 +2,58 @@
     <h1>CRYPTO</h1>
     <Input :changeAmount="changeAmount" />
     <p v-if="error != ''" class="error">{{ error }}</p>
-    
+    <Favourite :favourites="favourites" :getFromFavourites="getFromFavourites" v-if="favourites.length > 0" />
     
     <div class="selectors">
-        <Selector :setCrypto="setCryptoFirst" />
-        <Selector :setCrypto="setCryptoSecond" />
+        <Selector :setCrypto="setCryptoFirst" :cryptoNow="cryptoFirst" />
+        <Selector :setCrypto="setCryptoSecond" :cryptoNow="cryptoSecond" />
     </div>
     <input type="number" class="inputResult" v-model="info" placeholder="Resultado de la conversión" readonly />
     <button class="buttonConvert" @click="convert()">Convertir</button>
+    <button class="buttonConvert" @click="favourite()">Añadir a favoritos</button>
 
 </template>
 
 
 
 <script>
+import Favourite from "./components/Favourite.vue"
 import Input from "./components/Input.vue"
 import Selector from "./components/Selector.vue"
 import axios from "axios"
 
 export default {
-    components: { Input, Selector },
+    components: { Input, Selector, Favourite },
     data() {
         return {
             amount: 0,
             cryptoFirst: "",
             cryptoSecond: "",
             error: "",
-            info: null
+            info: null,
+            favourites: []
         }
     },
     methods: {
+        getFromFavourites(index) {
+            this.cryptoFirst = this.favourites[index].from
+            this.cryptoSecond = this.favourites[index].to
+        },
+
+        favourite() {
+            if(this.cryptoFirst == this.cryptoSecond) {
+                this.error = "Seleccione criptomonedas diferentes"
+                return;
+            }
+            this.error = ""
+
+            this.favourites.push({
+                from: this.cryptoFirst,
+                to: this.cryptoSecond
+            });
+            
+        },
+
         changeAmount(val) {
             this.amount = val
         },
@@ -56,6 +78,7 @@ export default {
                     this.error = "Error al realizar la conversión";
                 });
         },
+        
 
         errorMessage() {
             if(this.amount == "") {
